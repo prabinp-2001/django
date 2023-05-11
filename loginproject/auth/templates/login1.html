@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block body_block %}
+
+<h1>Login now</h1>
+
+<form method="post">
+    {% csrf_token %}
+    username <input type="text" name="n"> <br>
+    password <input type="text" name="p"><br>
+    <input type="submit" value="login"><br>
+    <a href="{% url 'password_reset' %}">Forgot password</a>
+</form>
+
+{%  endblock %}
