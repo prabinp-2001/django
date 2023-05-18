@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block body_block %}
+
+<div class="search-wraper">
+    <form  method="post">
+        {% csrf_token %}
+        <input type="text" name="search" placeholder="search...">
+        <input type="submit" value="search" class="s-btn">
+    </form>  
+</div>
+
+
+{% if messages %}
+
+<ul>
+    {% for message in messages %}
+    <li>{{ message}}</li>
+    {%endfor%}
+</ul>
+{% endif %}
+
+{% if s %}
+<table>
+    <tr>
+    <th>title</th>
+    <th>author</th>
+    <th>pdf</th>
+    <th>cover</th>
+    </tr>
+
+    {% for i in s %}
+    <tr>
+        <td>{{i.title}}</td>
+        <td>{{i.author}}</td>
+        <td><a href="{{i.pdf.url}}">Download</a></td>
+        <td><img src="{{i.cover.url}}" width="100px" height="100px"></td>
+        <td class="ope"><a href="{% url 'delete_book' i.pk %}" >Delete</a></td>
+        <td class="ope"><a href="{% url 'edit_book' i.pk %}" >Edit</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+{% endblock %}

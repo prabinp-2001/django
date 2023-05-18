@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body_block %}
+
+
+
+
+        <!-- Title <input type="text" name="title">
+        Author <input type="text" name="author">
+        pdf <input type="file" name="pdfs" >
+        cover <input type="file" name="cover">
+        <input type="submit" value="submit"> -->
+
+        
+
+   <div class="table-wraper">
+      <form method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+         
+            {{form.as_ul}}
+         
+         <input class="submit-btn" type="submit" value="Submit">
+      </form>
+      
+   </div>
+
+
+{% endblock %}
